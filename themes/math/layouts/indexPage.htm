@@ -7,7 +7,8 @@ description = "Layout for Main Page"
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="{{ this.page.meta_description }}">
 		<meta name="title" content="{{ this.page.meta_title }}">
-		<meta name="keywords" content="{{ this.theme.site_keywords }}{% if this.page.keywords %},{{ this.page.keywords }} {% endif %}">
+		<meta name="keywords"
+		      content="{{ this.theme.site_keywords }}{% if (this.page.keywords and this.theme.site_keywords) %},{% endif %}{{ this.page.keywords }} ">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="author" content="mokeev1995">
 		<link rel="shortcut icon" href="{{ this.theme.site_favicon }}" type="image/{{ this.theme.site_favicon_type }}">
@@ -16,34 +17,133 @@ description = "Layout for Main Page"
 
 		{% styles %}
 
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,300,700,400italic,100,900&subset=latin,cyrillic-ext'
+		      rel='stylesheet' type='text/css'>
 		<link href="{{ [
-			'assets/css/bootstrap.css',
-			'assets/css/bootstrap-theme.css',
-			'assets/css/main.css'
+		'assets/css/bootstrap.css',
+		'assets/css/bootstrap-theme.css',
+		'assets/css/main.css'
 		]|theme }}" rel="stylesheet">
 	</head>
 
 	<body>
 
-		<!-- Content -->
-		<div id="layout-content">
+		<section id="header-section">
+			<div id="left-bg"></div>
+			<section id="header" class="container">
+				<div id="logo">
+					<a href="{{ ''|page }}">
+						{{ this.theme.site_name }}
+					</a>
+				</div>
+				<menu>
+					<li><a href="#">Абитуриентам</a></li>
+					<li><a href="#">Студентам</a></li>
+  				    <li><a href="#">Контакты</a></li>
+				</menu>
+			</section>
 
-			{% page %}
+			<section id="quick-data" class="container">
+				<div class="title">
+					Информационные <br/>технологии
+				</div>
+				<a class="button" href="#">
+					УЗНАТЬ &nbsp;►
+				</a><div class="robot"></div>
+			</section>
 
-		</div>
+			<section id="news-preview">
+				<div id="splashes">
+					<table>
+						<tr>
+							<td>
+								<figure id="left">
+									<div class="leftpic"></div>
+									Как поступить <br>
+									<div class="left1">Пошаговое руководство.<br>Полезные советы</div>
+
+								</figure>
+							</td>
+							<td>
+								<figure id="center">
+									<div class="centerpic"></div>
+									Как учиться
+									<div class="center1">Олимпиады.<br>Какие кафедры классные?<br>Что, если не понятно?</div>
+
+								</figure>
+							</td>
+							<td>
+								<figure id="right">
+									<div class="rightpic"></div>
+									Где трудиться
+									<div class="right1">Что Вас ждет в будущем?<br>Куда пойти работать?<br>Есть ли смысл в этой жизни?</div>
+
+								</figure>
+							</td>
+						</tr>
+					</table>
+
+
+				</div>
+
+				<div id="news-text" class="text-center">
+					У нас творится история
+				</div>
+				<div class="buttonblue"><a href="#" class="button1">НОВОСТИ &nbsp;►</a></div>
+				<section>
+					<table style="margin: 39px 0 0 231px;">
+						<tr>
+							<td>
+								<div class="news1">
+								</div>
+							</td>
+							<td>
+								<div class="news2">
+								</div>
+							</td>
+							<td>
+								<div class="news3">
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="news4">
+								</div>
+							</td>
+							<td>
+								<div class="news5">
+								</div>
+							</td>
+							<td>
+								<div class="news6">
+								</div>
+							</td>
+						</tr>
+					</table>
+				</section>
+
+				<div class="clearfix"></div>
+			</section>
+
+			<div id="right-bg"></div>
+		</section>
+		<main>
+			{#{% page %}#}
+		</main>
 
 		<!-- Footer -->
 		<footer>
 
-			{% partial "footer" %}
+			{#{% partial "footer" %}#}
 
 		</footer>
 
 		<!-- Scripts -->
 		<script src="{{ [
-			'assets/js/jquery-2.2.0.min.js',
-			'assets/js/bootstrap.min.js',
-			'assets/js/app.js',
+		'assets/js/jquery-2.2.0.min.js',
+		'assets/js/bootstrap.min.js',
+		'assets/js/app.js',
 		] | theme }}"></script>
 		{% framework extras %}
 		{% scripts %}
